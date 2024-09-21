@@ -1,0 +1,13 @@
+.filled{
+    background-color: white;
+    padding: 10px;
+    border-radius:5px;
+}
+
+.outlined{ 
+    background-color: white;
+    padding: 10px;
+    border: solid;
+    border-radius:5px;
+
+} 

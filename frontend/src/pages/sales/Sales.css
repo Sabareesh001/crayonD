@@ -2,16 +2,22 @@
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 70% 30%;
     background-color: white;
     
 }
 
 .salesContainer .mainContainer{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
    background-color: rgb(255, 254, 254);
-   height: 100%;
-   padding: 20px;
-   display: flex;
+}
+
+.cartOptionsMasterContainer{
+    padding: 20px;
+    display: flex;
    flex-direction: column;
    gap: 20px;
 }
@@ -34,7 +40,7 @@
     border: solid rgb(186, 186, 186) 0.5px;
     height: 100%;
     display: flex;
-    width: 15%;
+    width: 50px;
     align-items: center;
     justify-content: center;
     border-radius:5px;
@@ -92,9 +98,50 @@
 
 .cartInfoHeadings{
     display: grid;
-    grid-template-columns: 70% 10% 20%;
+    padding: 10px;
+    color: gray;
+    border-top: solid rgb(189, 189, 189) 0.5px;
+    border-bottom: solid rgb(191, 191, 191) 0.5px;
+    grid-template-columns: 50% 10% 30% 10%;
+    box-shadow: 0px 0px 20px rgba(189, 189, 189, 0.45);
 }
 
 .cartInfoTable{
     width: 100%;
+}
+
+.cartInfoHeadings th{
+    text-align: center;
+    font-weight: 400;
+}
+
+.cartInfoHeadings .itemHeading{
+    text-align: start;
+}
+
+.cartInfoTableBody {
+   
+}
+
+.cartInfoTableBody tr{
+    display: grid;
+    grid-template-columns: 50% 10% 30% 10%;
+    padding: 10px;
+    border-bottom: solid rgb(191, 191, 191) 0.5px;
+}
+
+.cartInfoTableBody tr td{
+    text-align: center;
+}
+
+.cartInfoTableBody .itemData{
+    text-align: start;
+}
+
+.itemData .itemName{
+    font-weight:600;
+}
+
+.itemDeleteIcon{
+    color:gray;
 }

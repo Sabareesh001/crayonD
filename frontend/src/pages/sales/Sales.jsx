@@ -6,10 +6,12 @@ import TableRestaurantOutlinedIcon from "@mui/icons-material/TableRestaurantOutl
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { useState } from "react";
-import {useLocation} from "react-router-dom"
+import {useLocation, useNavigate} from "react-router-dom"
 import PaymentSummary from "./paymentSummary/PaymentSummary";
+import Catalog from "./catalog/Catalog";
 const Sales = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [cartData, setCartData] = useState([
     {
       itemName: "Chicken BBQ pizza with mexican flavoured toppings",
@@ -47,6 +49,10 @@ const Sales = () => {
     {
       path:"/sales",
       component:<PaymentSummary/>
+    },
+    {
+      path:"/sales/catalog",
+      component:<Catalog/>
     }
   ])
 
@@ -58,7 +64,7 @@ const Sales = () => {
             <div className="searchBar">
               <SearchBar placeholder={"Search"} />
             </div>
-            <div className="bookIconContainer">
+            <div onClick={()=>{navigate('catalog')}} className={`bookIconContainer${location.pathname==="/sales/catalog"?" active":""}`}>
               <MenuBookOutlinedIcon />
             </div>
           </div>

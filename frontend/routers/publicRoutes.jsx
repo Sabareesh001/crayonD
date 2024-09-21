@@ -2,7 +2,7 @@ import Sales from "../src/pages/sales/Sales";
 
 const publicRoutes = [
     {
-        path:'/sales',
+        path:'/sales/*',
         element:<Sales/>,
     }
 ]

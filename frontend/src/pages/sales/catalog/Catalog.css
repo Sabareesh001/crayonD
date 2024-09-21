@@ -1,0 +1,73 @@
+.catalogContainer{
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.headBarCatalog{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+.headBarCatalogIcons:hover{
+  cursor: pointer;
+}
+.iconContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.catalogFilterOptionsContainer{
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+.scrollableOptionsList{
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+    
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #fffffe;
+  }
+  
+*::-webkit-scrollbar {
+    width: 5px;
+    height: 3px;
+    background-color: #F5F5F5;
+  }
+
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #172b3d;
+  }
+
+.scrollableOptionsList>div{
+    flex: 1;
+}
+
+.cardComponentContainer{
+  width: 150px;
+  height: 170px;
+}
+
+.catalogContentContainer{
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    row-gap: 20px;
+    overflow: scroll;
+}
+

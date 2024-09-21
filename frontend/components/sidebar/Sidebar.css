@@ -1,0 +1,82 @@
+.sidebarContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #06273e;
+    gap: 10px;
+    color: white;
+    height: 100vh;
+}
+
+.sidebarContainer ul{
+    list-style: none;
+    display: flex;
+    font-size: 12px;
+    flex-direction: column;
+    padding: 0;
+}
+
+.sidebarContainer .logo{
+
+}
+
+.sidebarContainer ul li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 5px;
+    margin: 0;
+}
+
+.sidebarContainer ul li:hover{
+    background-color: white;
+    color: #06273e;
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px white ;
+    cursor: pointer;
+}
+
+
+.sidebarContainer .menuContainer{
+    font-size: 10px;
+}
+
+.bottomLogo{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.collageLogoContainer{
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+}
+
+.collageLogoContainer .nestleLogo{
+    height: 90%;
+    width: 90%;
+    object-fit:contain;
+}
+
+.collageLogoContainer .userProfileIcon{
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(50%,50%);
+   
+}
+
+.userProfileIcon img{
+    height: 100%;
+    width: 100%;
+    border:solid #06273e 2px;
+    border-radius: 100%;
+    object-fit: cover;
+}

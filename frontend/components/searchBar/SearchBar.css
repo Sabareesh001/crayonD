@@ -1,0 +1,20 @@
+.searchBarComponentContainer{
+    border: solid rgb(186, 186, 186) 0.5px;
+    color: black;
+    display: flex;
+    align-items: end;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.searchBarComponentContainer input{
+    background-color: transparent; 
+    width: 100%;
+    color: black;
+    border: none;
+    padding: 10px;
+}
+
+.searchBarComponentContainer input:focus{
+    outline: none;
+}

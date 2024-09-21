@@ -1,0 +1,100 @@
+.salesContainer{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    background-color: white;
+    
+}
+
+.salesContainer .mainContainer{
+   background-color: rgb(255, 254, 254);
+   height: 100%;
+   padding: 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+.salesContainer .infoContainer{
+    background-color: #f0f2f5;
+    width: 100%;
+    height: 100%;
+ }
+
+.salesContainer .mainContainer .searchContainer{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+}
+
+.searchContainer .bookIconContainer{
+    color: #3161d5;
+    border: solid rgb(186, 186, 186) 0.5px;
+    height: 100%;
+    display: flex;
+    width: 15%;
+    align-items: center;
+    justify-content: center;
+    border-radius:5px;
+}
+
+
+
+.searchContainer .searchBar{
+    width: 100%;
+    height: 100%;
+}
+
+.CartSummaryInfoContainer{
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.CartSummaryInfoContainer p{
+    margin: 0;
+}
+
+.orderIdContainer{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.orderIdContainer .orderIdLabel{
+    color: grey;
+}
+
+.cartInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.cartIconsContainer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cartSummaryTitle{
+    font-weight: bold;
+}
+
+.cartIconsContainer>div{
+    border: solid rgb(186, 186, 186) 0.5px;
+    border-radius:5px;
+    padding: 10px;
+}
+
+
+.cartInfoHeadings{
+    display: grid;
+    grid-template-columns: 70% 10% 20%;
+}
+
+.cartInfoTable{
+    width: 100%;
+}

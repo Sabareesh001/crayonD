@@ -111,7 +111,7 @@
     color: gray;
     border-top: solid rgb(189, 189, 189) 0.5px;
     border-bottom: solid rgb(191, 191, 191) 0.5px;
-    grid-template-columns: 50% 10% 30% 10%;
+    grid-template-columns: 50% 15% 30% 5%;
     box-shadow: 0px 0px 20px rgba(189, 189, 189, 0.45);
 }
 
@@ -134,7 +134,7 @@
 
 .cartInfoTableBody tr{
     display: grid;
-    grid-template-columns: 50% 10% 30% 10%;
+    grid-template-columns: 50% 15% 30% 5%;
     padding: 10px;
     border-bottom: solid rgb(191, 191, 191) 0.5px;
 }

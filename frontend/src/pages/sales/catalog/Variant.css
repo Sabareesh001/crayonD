@@ -1,0 +1,112 @@
+.variantMasterContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.variantHeadingContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.variantsAndAddOnButtonContainer{
+   display: flex;
+}
+
+.backArrow{
+    cursor: pointer;
+}
+
+.variantsButton{
+    background-color:#3161d5 ;
+    color: white;
+    flex: 1;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px 0px 0px 5px  ;
+    border:#264a9f solid 1px;
+}
+
+.addonsButton{
+   background-color: transparent;
+   border:gray solid 1px;
+   border-radius:  0px  5px 5px 0px ;
+   flex: 1;
+   display: flex;
+    align-items: center;
+    justify-content: center;
+   padding: 5px;
+
+}
+
+.variantsOptionsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid gray 0.5px;
+}
+
+.selectVariantRadio{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.variantSelectInfoContainer{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.variantProductImage{
+    height: 100px;
+    width: 100px;
+
+}
+.variantProductDetails{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.variantProductImage img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.itemsLabelAndAmountTotal{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+
+
+
+
+.addOrderButtonsContainer{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    align-items: center;
+}
+.addOrderButtonsContainer>div{
+    flex: 1;
+}
+.variantSelectionActionsContainer{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 20px;
+}
+.variantSelectionActionsMasterContainer{
+    border-top: gray solid 0.5px;
+}
+

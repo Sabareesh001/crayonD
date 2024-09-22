@@ -8,32 +8,47 @@ import PercentOutlinedIcon from '@mui/icons-material/PercentOutlined';
 import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
 import Button from '../../../../components/button/Button';
 import { blue } from '@mui/material/colors';
-const PaymentSummary = ()=>{
+const PaymentSummary = ({cartData})=>{
+    const [cartDataCopy,setCartDataCopy] = useState([...cartData])
     const [paymentSummaryData,setPaymentSummaryData] = useState(
         [
-           [ {
+            {
                 label:"Sub Total",
-                amount:1050.00
+                amount:0.00
             },
             {
                 label:"Taxable Amount",
-                amount:1000.00
+                amount:0.00
             },
             {
                 label:"Total Tax",
-                amount:50.00
-            }]
+                amount:0.00
+            }
         ]
     )
     const [grandTotal,setGrandTotal] = useState(0.00);
+
+    useEffect(()=>{
+       let total = 0.00;
+       cartDataCopy?.map((data)=>{
+        total += data.quantity * data.amount
+       })
+       console.log(cartDataCopy)
+       setPaymentSummaryData((prev)=>{
+        const newPrev = [...paymentSummaryData];
+        newPrev[0].amount = total
+        return newPrev
+       })
+    },[cartDataCopy])
+
+    useEffect(()=>{
+    setCartDataCopy(cartData)
+    },[cartData])
+
     useEffect(()=>{
         let total = 0.00;
-       paymentSummaryData.forEach((summary)=>{
-          total += summary.find((data)=>{
-            return(
-                data.label === "Sub Total"
-            )
-           }).amount
+       paymentSummaryData.forEach((data)=>{
+          total += data.amount
        })
        setGrandTotal(total)
     },[paymentSummaryData])
@@ -49,10 +64,9 @@ const PaymentSummary = ()=>{
                     Ashwin
                 </p>
              </div>
-            { paymentSummaryData.map((summary)=>{
+            { paymentSummaryData.map((data)=>{
 
-                return(
-                         summary.map((data)=>{
+             
                         return(
                             <div>
 
@@ -67,9 +81,8 @@ const PaymentSummary = ()=>{
 
                            
                              )
-                    })
-                   
-                )
+           
+                
             
             })
             }

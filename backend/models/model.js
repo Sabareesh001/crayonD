@@ -1,0 +1,8 @@
+const  product_category_master = require('./product_category_master')
+const  cart = require('./cart')
+const  product_variants = require('./product_variants')
+const  products = require('./products')
+products.belongsTo(product_category_master)
+product_variants.belongsTo(products)
+cart.belongsTo(product_variants)
+cart.belongsTo(product_category_master)

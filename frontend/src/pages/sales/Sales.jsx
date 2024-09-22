@@ -4,57 +4,39 @@ import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import TableRestaurantOutlinedIcon from "@mui/icons-material/TableRestaurantOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
-import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import { useState } from "react";
-import {useLocation, useNavigate} from "react-router-dom"
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import PaymentSummary from "./paymentSummary/PaymentSummary";
 import Catalog from "./catalog/Catalog";
+import Variants from "./catalog/Variants";
+import IncrementableSlider from "../../../components/incrementableSlider/IncrementableSlider";
+import Button from "../../../components/button/Button";
 const Sales = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [cartData, setCartData] = useState([
-    {
-      itemName: "Chicken BBQ pizza with mexican flavoured toppings",
-      itemContent: "3 large pan pizzas,fries,burger",
-      quantity: 1,
-      amount: 300,
-    },
-    {
-      itemName: "Mushroom Salad",
-      itemContent: "3 large pan pizzas,fries,burger",
-      quantity: 3,
-      amount: 300,
-    },
-    {
-      itemName: "Grape Juice",
-      itemContent: "",
-      quantity: 2,
-      amount: 300,
-    },
-    {
-      itemName: "Mushroom Sandwich combo",
-      itemContent: "3 large pan pizzas,fries,burger",
-      quantity: 1,
-      amount: 300,
-    },
-    {
-      itemName: "Cappuccino",
-      itemContent: "",
-      quantity: 2,
-      amount: 300,
-    },
-  ]);
+  const [cartData, setCartData] = useState([]);
 
-  const[infoPages,setInfoPages] = useState([
+  // Log changes to cartData
+  useEffect(() => {
+    console.log(cartData);
+  }, [cartData]);
+
+  // Move infoPages into the component body so it's recreated with the latest cartData
+  const infoPages = [
     {
-      path:"/sales",
-      component:<PaymentSummary/>
+      path: "/sales",
+      component: <PaymentSummary cartData={cartData} />,
     },
     {
-      path:"/sales/catalog",
-      component:<Catalog/>
-    }
-  ])
+      path: "/sales/catalog",
+      component: <Catalog />,
+    },
+    {
+      path: "/sales/catalog/variant",
+      component: <Variants setCartData={setCartData} />,
+    },
+  ];
 
   return (
     <div className="salesContainer">
@@ -64,7 +46,14 @@ const Sales = () => {
             <div className="searchBar">
               <SearchBar placeholder={"Search"} />
             </div>
-            <div onClick={()=>{navigate('catalog')}} className={`bookIconContainer${location.pathname==="/sales/catalog"?" active":""}`}>
+            <div
+              onClick={() => {
+                navigate("catalog");
+              }}
+              className={`bookIconContainer${
+                location.pathname?.includes("/sales/catalog") ? " active" : ""
+              }`}
+            >
               <MenuBookOutlinedIcon />
             </div>
           </div>
@@ -98,22 +87,57 @@ const Sales = () => {
               <th>Amount(SAR)</th>
             </thead>
             <tbody className="cartInfoTableBody">
-              {cartData.map((data) => (
-                <tr>
+              {cartData?.map((data, i) => (
+                <tr key={i}>
                   <td className="itemData">
                     <div>
-                      <div className="itemName">{data.itemName}</div>
-                      <div>{data.itemContent}</div>
-                      </div>
+                      <div className="itemName">{data.product.name}</div>
+                      <div>{data.variant.name}</div>
+                    </div>
                   </td>
                   <td>
-                    <div>{data.quantity}</div>
+                    <div>
+                      <Button
+                        borderColor={"gray"}
+                        content={
+                          <IncrementableSlider
+                            value={data.quantity}
+                            incrementValue={() => {
+                              setCartData((prev) => {
+                                const newCardData = [...prev];
+                                newCardData[i].quantity += 1;
+                                return newCardData;
+                              });
+                            }}
+                            decrementValue={() => {
+                              setCartData((prev) => {
+                                const newCardData = [...prev];
+                                if (newCardData[i].quantity > 1) {
+                                  newCardData[i].quantity -= 1;
+                                }
+                                return newCardData;
+                              });
+                            }}
+                          />
+                        }
+                      />
+                    </div>
                   </td>
                   <td>
-                    <div>{data.amount}</div>
+                    <div>{(data.amount * data.quantity).toFixed(2)}</div>
                   </td>
                   <td>
-                    <div className="itemDeleteIcon"><DeleteOutlinedIcon/></div>
+                    <div className="itemDeleteIcon">
+                      <DeleteOutlinedIcon
+                        onClick={() => {
+                          setCartData((prev) => {
+                            const newCartData = [...cartData];
+                            newCartData?.splice(i, 1);
+                            return newCartData;
+                          });
+                        }}
+                      />
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -122,14 +146,12 @@ const Sales = () => {
         </div>
       </div>
       <div className="infoContainer">
-        {
-          infoPages.find((data)=>(
-            location.pathname===data.path 
-          ))?.component
-        }
+        {infoPages.find((data) => location.pathname === data.path)?.component}
       </div>
     </div>
   );
 };
 
 export default Sales;
+
+

@@ -12,7 +12,13 @@
     justify-content: space-between;
 }
 
+.allOption:hover{
+  cursor: pointer;
+}
 
+.filterOption:hover{
+  cursor: pointer;
+}
 
 .headBarCatalogIcons:hover{
   cursor: pointer;
@@ -24,14 +30,19 @@
 }
 .catalogFilterOptionsContainer{
     display: flex;
-    gap: 10px;
-    padding: 10px;
+}
+
+.filterOptionsList{
+  display: flex;
+  padding: 20px 10px;
+  gap: 10px;
+
 }
 
 .scrollableOptionsList{
     display: flex;
     gap: 10px;
-    overflow-x: scroll;
+    overflow-x: auto;
     
 }
 

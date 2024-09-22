@@ -8,7 +8,10 @@ import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import NestleLogo from '../../src/assets/nestleLogo.png'
 import ManLogo from '../../src/assets/manProfile.jpg'
+import { useLocation, useNavigate } from "react-router-dom";
 const Sidebar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   return (
     <div className="sidebarContainer">
       <div className="logo">
@@ -20,27 +23,27 @@ const Sidebar = () => {
       </div>
       <div className="menuContainer">
           <ul>
-            <li>
+            <li onClick={()=>{navigate('/dashboard')}} className={`menu${location.pathname.includes('/dashboard')? " active":""}`}>
               <DashboardIcon />
               Dashboard
             </li>
-            <li>
+            <li onClick={()=>{navigate('/sales')}} className={`menu${location.pathname.includes('/sales')? " active":""}`}>
               <AddShoppingCartIcon />
               Sales
             </li>
-            <li>
+            <li onClick={()=>{navigate('/orders')}}   className={`menu${location.pathname.includes('/orders')? " active":""}`}>
                 <ReceiptIcon/>
                 Orders</li>
-            <li>
+            <li onClick={()=>{navigate('/customer')}}    className={`menu${location.pathname.includes('/customer')? " active":""}`}>
                 <AccountBoxIcon/>
                 Customer</li>
-            <li>
+            <li onClick={()=>{navigate('/items')}}   className={`menu${location.pathname.includes('/items')? " active":""}`}>
                 <StorefrontOutlinedIcon/>
                 Items</li>
-            <li>
+            <li onClick={()=>{navigate('/inventory')}}   className={`menu${location.pathname.includes('/inventory')? " active":""}`}>
                 <Inventory2OutlinedIcon/>
                 Inventory</li>
-            <li>
+            <li  onClick={()=>{navigate('/alerts')}}  className={`menu${location.pathname.includes('/alerts')? " active":""}`}>
                 <NotificationsNoneOutlinedIcon/>
                 Alerts</li>
           </ul>

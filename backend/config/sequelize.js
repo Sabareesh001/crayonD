@@ -19,5 +19,6 @@ const checkConnection = async()=>{
 checkConnection();
 
 
+
 module.exports = sequelize;
 

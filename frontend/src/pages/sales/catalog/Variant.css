@@ -54,6 +54,26 @@
     gap: 10px;
 }
 
+input[type='radio'] {
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background-clip: content-box;
+    border: 1.5px solid rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+
+input[type='radio']:checked{
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-clip: content-box;
+    padding: 3px;
+    background-color: #3161d5;
+}
+
 .variantSelectInfoContainer{
     padding: 20px;
     display: flex;

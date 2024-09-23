@@ -18,4 +18,3 @@ const cart = sequelize.define(
 )
 
 module.exports = cart;
-

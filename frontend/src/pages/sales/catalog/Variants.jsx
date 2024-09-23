@@ -6,7 +6,10 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import Button from "../../../../components/button/Button";
 import IncrementableSlider from "../../../../components/incrementableSlider/IncrementableSlider";
-
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import { toast,ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const Variants = ({setCartData}) => {
   const [variantData, setVariantData] = useState([]);
   const navigate = useNavigate();
@@ -29,7 +32,7 @@ const Variants = ({setCartData}) => {
           <h4>Variants & Add-ons</h4>
           <div
             onClick={() => {
-              navigate("/sales/catalog");
+              navigate(-1);
             }}
             className="backArrow"
           >
@@ -51,24 +54,23 @@ const Variants = ({setCartData}) => {
           {variantData?.variants?.map((data,i) => {
             return (
               <div  className="variantsOptionsContainer">
-                <div className="selectVariantRadio">
-                  <input
-                  checked={
-                     selectedVariant === i
-                  }
-                  onClick={()=>{
-                    setSelectedVariant(i);
-                    setOrderDetails(
-                        {
-                            variant:data,
-                            quantity:1,
-                            amount:data.price,
-                            product:variantData.product
-                        }
-                    )     
-                  }} className="radioButton" type="radio" />
+                <div className="selectVariantRadio" onClick={()=>{
+                  setSelectedVariant(i)
+                  setOrderDetails(
+                    {
+                        variant:data,
+                        quantity:1,
+                        amount:data.price,
+                        product:variantData.product
+                    }
+                )   
+                  }}>
+                 { i!==selectedVariant?
+               <RadioButtonUncheckedIcon  />:
+               <RadioButtonCheckedIcon style={{color:"#3161d5"}}/>}
                   <p style={{fontSize:`${16-i}px`}}>{data.name}</p>
                 </div>
+          
                 <b style={{color:(selectedVariant === i)?'#3161d5':''}}>SAR {data.price}</b>
               </div>
             );
@@ -93,6 +95,9 @@ const Variants = ({setCartData}) => {
                   <div>
                     <IncrementableSlider
                       incrementValue={() => {
+                        if(orderDetails.variant===null){
+                          return
+                        }
                         setOrderDetails((prev) => {
                           const newOrderDetails = {...prev};
                           newOrderDetails.quantity += 1; // Increment the quantity
@@ -116,6 +121,10 @@ const Variants = ({setCartData}) => {
             </div>
             <div
             onClick={()=>{
+               if(orderDetails.quantity<1){
+                toast.error('Please select something to Add');
+                return;
+               }
                 setCartData((prev)=>{
                     const newPrev = [...prev]
                     newPrev.push({...orderDetails})
@@ -133,6 +142,7 @@ const Variants = ({setCartData}) => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

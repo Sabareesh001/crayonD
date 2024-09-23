@@ -18,4 +18,3 @@ const products = sequelize.define(
 )
 
 module.exports = products;
-

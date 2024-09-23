@@ -9,10 +9,11 @@
 }
 
 .sidebarContainer ul{
+    
     list-style: none;
     display: flex;
     font-size: 10px;
-    gap: 10px;
+    gap: 5px;
     font-weight: bold;
     flex-direction: column;
     padding: 0;

@@ -1,5 +1,6 @@
 import SearchBar from "../../../components/searchBar/SearchBar";
 import "./Sales.css";
+import EmptyCart from '../../assets/empty-cart.png'
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import TableRestaurantOutlinedIcon from "@mui/icons-material/TableRestaurantOutlined";
@@ -12,6 +13,8 @@ import Catalog from "./catalog/Catalog";
 import Variants from "./catalog/Variants";
 import IncrementableSlider from "../../../components/incrementableSlider/IncrementableSlider";
 import Button from "../../../components/button/Button";
+import 'react-toastify/dist/ReactToastify.css';
+import {toast,ToastContainer} from 'react-toastify';
 const Sales = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -142,12 +145,25 @@ const Sales = () => {
                 </tr>
               ))}
             </tbody>
+            {
+              cartData.length===0 &&
+              <div className="emptyCartIconMasterContainer" >
+                <div className="emptyCartIconContainer">
+                   <img  src={EmptyCart}>
+                  </img>
+                  <div>Cart is empty</div>
+                  <div>Scan barcode or Add items from the Catalog</div>
+                </div>
+              </div>
+            }
           </table>
+
         </div>
       </div>
       <div className="infoContainer">
         {infoPages.find((data) => location.pathname === data.path)?.component}
       </div>
+      <ToastContainer/>
     </div>
   );
 };

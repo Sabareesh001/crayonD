@@ -34,9 +34,8 @@
 
 .filterOptionsList{
   display: flex;
-  padding: 20px 10px;
+  padding: 10px 10px;
   gap: 10px;
-
 }
 
 .scrollableOptionsList{
@@ -46,22 +45,32 @@
     
 }
 
-*::-webkit-scrollbar-track {
+
+
+.scrollableOptionsList::-webkit-scrollbar-track {
     border-radius: 10px;
     background-color: #fffffe;
+    
   }
   
-*::-webkit-scrollbar {
+.scrollableOptionsList::-webkit-scrollbar {
     width: 5px;
     height: 3px;
-    background-color: #F5F5F5;
+    display: block;
   }
 
+.scrollableOptionsList::-webkit-scrollbar-button{
+  display: none;
 
-*::-webkit-scrollbar-thumb {
+}
+
+
+.scrollableOptionsList::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #172b3d;
+    background-color: blue;
   }
+
+
 
 .scrollableOptionsList>div{
     flex: 1;
@@ -74,11 +83,14 @@
 
 .catalogContentContainer{
     display: flex;
-    padding: 10px;
+    padding: 5px 20px;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    justify-content:space-between;
     row-gap: 20px;
     overflow: scroll;
+}
+
+.headBarAndFilterContainerCatalog{
+  padding-top: 10px;
 }
 

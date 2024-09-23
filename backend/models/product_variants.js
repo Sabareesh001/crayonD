@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/sequelize');
 const product_variants = sequelize.define(
-    'product_variants',
+    'variants',
     {
    
         name:{
@@ -18,9 +18,9 @@ const product_variants = sequelize.define(
         
     },
     {
+        tableName:'product_variants',
         timestamps:true
     }
 )
 
 module.exports = product_variants;
-

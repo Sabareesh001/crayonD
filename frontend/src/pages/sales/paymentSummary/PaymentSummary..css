@@ -7,15 +7,31 @@
 
 .paymentSummaryCollectionContainer{
   padding: 20px;
+  display: flex;
+  
+  flex-direction: column;
+}
+
+.paymentSummaryCollectionContainer p{
+    margin: 0;
+}
+
+.grandTotalContainer .amount{
+    font-size: larger;
+    font-weight: bold;
+    color: #000;
+}
+
+.grandTotalContainer p{
+    color: gray;
 }
 
 .paymentSummaryCollectionContainer>div{
     display: flex;
+    padding-bottom: 15px;
     justify-content: space-between;
 }
-.amount{
-    font-weight: bold;
-}
+
 .paymentSummaryTitle{
     font-weight: bold;
 }
@@ -33,13 +49,25 @@
        align-items: center;
 }
 
+.totalCalcContainer p{
+    color: gray;
+}
+.totalCalcContainer .amount{
+    font-weight: bold;
+    color: #000;
+}
 .addNoteContainer{
-    border-top: solid gray 0.5px;
-    border-bottom: solid gray 0.5px;
+    border-top: solid rgba(128, 128, 128, 0.25) 0.5px;
+    border-bottom: solid rgba(128, 128, 128, 0.25) 0.5px;
     display:flex;
-    padding: 10px;
+    padding: 15px 10px;
     flex-direction: column;
 
+}
+
+.grandTotalContainer{
+    padding-top: 15px;
+    border-top: solid rgba(128, 128, 128, 0.25) 0.5px;
 }
 
 .addNote{
@@ -54,7 +82,7 @@
     padding: 20px;
     flex-wrap: wrap;
     gap: 10px;
-    border-bottom: solid gray 0.5px;
+    border-bottom: solid rgba(128, 128, 128, 0.25) 0.5px;
 
 }
 
@@ -68,12 +96,13 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
+    padding: 2px;
 }
 
 .printContainer{
   display: flex;
   justify-content: space-around;
-  padding: 10px;
+  padding: 20px;
   gap: 10px;
   flex-wrap: wrap;
 }

@@ -19,4 +19,3 @@ const product_category_master = sequelize.define(
 )
 
 module.exports = product_category_master;
-

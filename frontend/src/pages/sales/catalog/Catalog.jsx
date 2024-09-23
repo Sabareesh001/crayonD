@@ -41,7 +41,7 @@ const Catalog = () => {
       setFilteredCatalogData(
         catalogData.filter((data) => {
           return (
-            data.product.productCategoryMasterId ===
+            data.productCategoryMasterId ===
             categories[selectedFilter].id
           );
         })
@@ -52,60 +52,62 @@ const Catalog = () => {
   }, [catalogData, selectedFilter]);
   return (
     <div className="catalogContainer">
-      <div className="headBarCatalog">
-        <h4>Catalog</h4>
-        <div className="headBarCatalogIcons">
-          <MoreVertOutlinedIcon />
-          <CloseOutlinedIcon
-            onClick={() => {
-              navigate("/sales");
-            }}
-          />
-        </div>
-      </div>
-      <div className="catalogFilterOptionsContainer">
-        <div className="scrollableOptionsList">
-          <div className="filterOptionsList">
-            <div
+      <div className="headBarAndFilterContainerCatalog">
+        <div className="headBarCatalog">
+          <h4>Catalog</h4>
+          <div className="headBarCatalogIcons">
+            <MoreVertOutlinedIcon />
+            <CloseOutlinedIcon
               onClick={() => {
-                setSelectedFilter(null);
+                navigate("/sales");
               }}
-              className="allOption"
-            >
-              <Button
-                fillColor={selectedFilter === null ? "#3161d5" : ""}
-                borderColor={selectedFilter === null ? "none" : "gray"}
-                color={selectedFilter === null ? "white" : ""}
-                content={"All"}
-              />
-            </div>
-            <div className="filterOption">
-              <Button
-                type="outlined"
-                content={
-                  <div className="iconContainer">
-                    <StarBorderOutlinedIcon /> Favorites
+            />
+          </div>
+        </div>
+        <div className="catalogFilterOptionsContainer">
+          <div className="scrollableOptionsList">
+            <div className="filterOptionsList">
+              <div
+                onClick={() => {
+                  setSelectedFilter(null);
+                }}
+                className="allOption"
+              >
+                <Button
+                  fillColor={selectedFilter === null ? "#3161d5" : ""}
+                  borderColor={selectedFilter === null ? "none" : "gray"}
+                  color={selectedFilter === null ? "white" : ""}
+                  content={"All"}
+                />
+              </div>
+              <div className="filterOption">
+                <Button
+                  type="outlined"
+                  content={
+                    <div className="iconContainer">
+                      <StarBorderOutlinedIcon /> Favorites
+                    </div>
+                  }
+                />
+              </div>
+              {categories.map((data, i) => {
+                return (
+                  <div
+                    onClick={() => {
+                      setSelectedFilter(i);
+                    }}
+                    className="filterOption"
+                  >
+                    <Button
+                      fillColor={selectedFilter === i ? "#3161d5" : ""}
+                      color={selectedFilter === i ? "white" : ""}
+                      type="outlined"
+                      content={<div className="iconContainer">{data.name}</div>}
+                    />
                   </div>
-                }
-              />
+                );
+              })}
             </div>
-            {categories.map((data, i) => {
-              return (
-                <div
-                  onClick={() => {
-                    setSelectedFilter(i);
-                  }}
-                  className="filterOption"
-                >
-                  <Button
-                    fillColor={selectedFilter === i ? "#3161d5" : ""}
-                    color={selectedFilter === i ? "white" : ""}
-                    type="outlined"
-                    content={<div className="iconContainer">{data.name}</div>}
-                  />
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>
@@ -115,16 +117,16 @@ const Catalog = () => {
           return (
             <div
               onClick={() => {
-                navigate(`catalog/variant?id=${data.product.id}`);
+                navigate(`catalog/variant?id=${data.id}`);
               }}
               className="cardComponentContainer"
             >
               <Card
                 infoIcon={true}
-                Image={data.product.img_url}
-                title={data.product.name}
+                Image={data.img_url}
+                title={data.name}
                 subTitle={
-                  data.variants.length > 0
+                  data.variants.length > 1
                     ? `${data.variants.length} variants`
                     : ""
                 }

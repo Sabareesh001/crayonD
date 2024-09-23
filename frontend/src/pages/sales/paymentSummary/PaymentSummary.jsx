@@ -64,11 +64,12 @@ const PaymentSummary = ({cartData})=>{
                     Ashwin
                 </p>
              </div>
+             
             { paymentSummaryData.map((data)=>{
 
              
                         return(
-                            <div>
+                            <div className='totalCalcContainer'>
 
                              <p>
                                 {data.label}
@@ -86,8 +87,7 @@ const PaymentSummary = ({cartData})=>{
             
             })
             }
-            <hr></hr>
-            <div>
+            <div className='grandTotalContainer'>
                 <p>
                    Grand Total
                 </p>
@@ -144,7 +144,7 @@ const PaymentSummary = ({cartData})=>{
                     </div>
                     <div className='proceedToPayment'>
                     <Button
-                    type='filled'
+                    borderColor={'#3161d5'}
                     fillColor={"#3161d5"}
                     color={"white"}
                      content={
